@@ -169,8 +169,10 @@ fi
 touch /var/lib/misc/udhcpd.leases
 
 echo "Initialising access point"
-service hostapd start
-update-rc.d hostapd enable
+systemctl unmask hostapd
+systemctl enable hostapd
+systemctl start hostapd
+
 
 echo "Initialising DHCP server"
 service udhcpd start
